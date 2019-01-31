@@ -2,6 +2,10 @@
 
 namespace SpecFile;
 
+class NotANumberException extends \Exception
+{
+}
+
 class Slownie
 {
     private const UNITIES = [
@@ -19,6 +23,16 @@ class Slownie
 
     public function print($amount)
     {
+        if (!is_numeric($amount)) {
+            throw new NotANumberException(sprintf('"%s" is not a number', $amount));
+        }
+
+        if (is_int($amount)) {
+            $amount = intval($amount);
+        } elseif (is_float($amount)) {
+            $amount = floatval($amount);
+        }
+
         return static::printHelper($amount, 0);
     }
 
@@ -64,11 +78,11 @@ class Slownie
         }
 
         if ($todo && $rest) {
-      	    $answer .= ' ';
+            $answer .= ' ';
         }
 
         if ($rest || !intval($amount)) {
-            $answer .= static::printHundreds($rest, $log_1000 == 0);
+            $answer .= static::printNumbersBelow1000($rest, $log_1000 == 0);
         }
 
         if (!($rest == 1 && $log_1000 != 0) && ($rest || $log_1000 == 0)) {
@@ -86,7 +100,7 @@ class Slownie
         return $answer;
     }
 
-    private static function printHundreds($amount, $printOne)
+    private static function printNumbersBelow1000($amount, $printOne)
     {
         if ($amount == 1 && !$printOne) {
             return '';
@@ -97,7 +111,7 @@ class Slownie
         }
         
         if ($amount < 100) {
-            return static::printTysAndTeens($amount);
+            return static::printNumbersBelow100($amount);
         }
 
         $HUNDREDS = [
@@ -115,13 +129,13 @@ class Slownie
         $answer = $HUNDREDS[intdiv($amount, 100)];
         $rest = $amount % 100;
         if ($rest) {
-            $answer .= ' ' . static::printTysAndTeens($rest);
+            $answer .= ' ' . static::printNumbersBelow100($rest);
         }
 
         return $answer;
     }
 
-    private static function printTysAndTeens($amount)
+    private static function printNumbersBelow100($amount)
     {
         if ($amount < 10) {
             return static::printUnities($amount);
