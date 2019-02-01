@@ -1,5 +1,5 @@
-Slownie::print
-==============
+Slownie::printSpelledOut
+========================
 
 NAME
 ----
@@ -15,7 +15,7 @@ Slownie::printSpelledOut(number $amount) : string
 
 DESCRIPTION
 -----------
-The *print* method prints spelled out amount of money in Polish.
+The *printSpelledOut* method prints spelled out amount of money in Polish.
 
 RETURN VALUES
 -------------
