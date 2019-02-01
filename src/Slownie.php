@@ -21,7 +21,7 @@ class Slownie
         'dziewięć',
     ];
 
-    public function print($amount)
+    public static function print($amount)
     {
         if (!is_numeric($amount)) {
             throw new NotANumberException(sprintf('"%s" is not a number', $amount));
