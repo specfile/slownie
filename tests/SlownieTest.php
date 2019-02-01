@@ -61,18 +61,18 @@ class SlownieTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidInputsProvider
+     * @dataProvider notANumberInputsProvider
+     * @expectedException SpecFile\NotANumberException
      */
-    public function testInvalidInputs($amount, $expectedException)
+    public function testNotANumberInputs($amount)
     {
-        $this->expectException($expectedException);
         Slownie::printSpelledOut($amount);
     }
 
-    public function invalidInputsProvider()
+    public function notANumberInputsProvider()
     {
         return [
-            ['hundred' , NotANumberException::class],
+            ['hundred'],
         ];
     }
 }
