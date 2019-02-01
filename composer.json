@@ -1,6 +1,6 @@
 {
     "name": "specfile/slownie",
-    "description": "Slownie::print - print spelled out amount of money in Polish",
+    "description": "Slownie::printSpelledOut - print spelled out amount of money in Polish",
     "license": "MIT",
     "autoload": {
         "classmap": [

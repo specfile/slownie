@@ -8,7 +8,7 @@ class NotANumberException extends \Exception
 
 class Slownie
 {
-    private const UNITIES = [
+    private static $UNITIES = [
         'zero',
         'jeden',
         'dwa',
@@ -21,7 +21,7 @@ class Slownie
         'dziewięć',
     ];
 
-    public static function print($amount)
+    public static function printSpelledOut($amount)
     {
         if (!is_numeric($amount)) {
             throw new NotANumberException(sprintf('"%s" is not a number', $amount));
@@ -71,7 +71,7 @@ class Slownie
 
         $answer = '';
 
-        $todo = intdiv($amount, 1000);
+        $todo = (int)floor($amount / 1000);
         $rest = $amount % 1000;
         if ($todo) {
             $answer .= static::printHelper($todo, $log_1000+1);
@@ -105,11 +105,11 @@ class Slownie
         if ($amount == 1 && !$printOne) {
             return '';
         }
-        
+
         if ($amount < 10) {
             return static::printUnities($amount);
         }
-        
+
         if ($amount < 100) {
             return static::printNumbersBelow100($amount);
         }
@@ -123,10 +123,10 @@ class Slownie
         ];
 
         for ($i = 5; $i < 10; $i++) {
-            array_push($HUNDREDS, static::UNITIES[$i] . 'set');
+            array_push($HUNDREDS, static::$UNITIES[$i] . 'set');
         }
-        
-        $answer = $HUNDREDS[intdiv($amount, 100)];
+
+        $answer = $HUNDREDS[(int)floor($amount / 100)];
         $rest = $amount % 100;
         if ($rest) {
             $answer .= ' ' . static::printNumbersBelow100($rest);
@@ -153,7 +153,7 @@ class Slownie
             'osiemnaście',
             'dziewiętnaście',
         ];
-        
+
         if ($amount >= 10 && $amount < 20) {
             return $TEENS[$amount % 10];
         }
@@ -167,10 +167,10 @@ class Slownie
         ];
 
         for ($i = 5; $i < 10; $i++) {
-            array_push($TYS, static::UNITIES[$i] . 'dziesiąt');
+            array_push($TYS, static::$UNITIES[$i] . 'dziesiąt');
         }
 
-        $answer = $TYS[intdiv($amount, 10)];
+        $answer = $TYS[(int)floor($amount / 10)];
         $rest = $amount % 10;
         if ($rest) {
             $answer .= ' ' . static::printUnities($rest);
@@ -181,7 +181,7 @@ class Slownie
 
     private static function printUnities($amount)
     {
-        return static::UNITIES[$amount];
+        return static::$UNITIES[$amount];
     }
 
     // See <https://www.unicode.org/cldr/charts/34/supplemental/language_plural_rules.html#pl>.

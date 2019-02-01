@@ -3,14 +3,14 @@ Slownie::print
 
 NAME
 ----
-Slownie::print - print spelled out amount of money in Polish
+Slownie::printSpelledOut - print spelled out amount of money in Polish
 
 SYNOPSIS
 --------
 ```
 use SpecFile;
 
-Slownie::print(number $amount) : string
+Slownie::printSpelledOut(number $amount) : string
 ```
 
 DESCRIPTION
@@ -23,7 +23,7 @@ Spelled out amount as string.
 
 EXAMPLES
 --------
-*Slownie::print(123)* returns "sto dwadzieścia trzy złote 00/100" and *Slownie::print(1234.01)* - "tysiąc dwieście trzydzieści cztery złote 01/100".
+*Slownie::printSpelledOut(123)* returns "sto dwadzieścia trzy złote 00/100" and *Slownie::printSpelledOut(1234.01)* - "tysiąc dwieście trzydzieści cztery złote 01/100".
 
 EXCEPTIONS
 ----------

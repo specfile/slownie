@@ -11,7 +11,7 @@ class SlownieTest extends TestCase
      */
     public function testValidInputs($amount, $expected)
     {
-        $this->assertSame($expected, Slownie::print($amount));
+        $this->assertSame($expected, Slownie::printSpelledOut($amount));
     }
 
     public function validInputsProvider()
@@ -59,16 +59,16 @@ class SlownieTest extends TestCase
             [999999999999999, 'dziewięćset dziewięćdziesiąt dziewięć bilionów dziewięćset dziewięćdziesiąt dziewięć miliardów dziewięćset dziewięćdziesiąt dziewięć milionów dziewięćset dziewięćdziesiąt dziewięć tysięcy dziewięćset dziewięćdziesiąt dziewięć złotych 00/100'],
         ];
     }
-    
+
     /**
      * @dataProvider invalidInputsProvider
      */
     public function testInvalidInputs($amount, $expectedException)
     {
         $this->expectException($expectedException);
-        Slownie::print($amount);
+        Slownie::printSpelledOut($amount);
     }
-    
+
     public function invalidInputsProvider()
     {
         return [
