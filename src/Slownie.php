@@ -70,6 +70,11 @@ class Slownie
         ];
 
         $answer = '';
+        
+        if ($amount < 0) {
+            $answer = 'minus ';
+            $amount = -$amount;
+        }
 
         $todo = (int)floor($amount / 1000);
         $rest = $amount % 1000;
