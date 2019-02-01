@@ -1,4 +1,6 @@
 {
+    "name": "specfile/slownie",
+    "description": "Slownie::print - print spelled out amount of money in Polish",
     "autoload": {
         "classmap": [
             "src/"
