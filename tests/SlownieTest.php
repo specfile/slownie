@@ -25,6 +25,8 @@ class SlownieTest extends TestCase
             ['0.99' , 'zero złotych 99/100'],
             [1, 'jeden złoty 00/100'],
             [1.0, 'jeden złoty 00/100'],
+            ['1', 'jeden złoty 00/100'],
+            ['1.0', 'jeden złoty 00/100'],
             [-1, 'minus jeden złoty 00/100'],
             [10, 'dziesięć złotych 00/100'],
             [11, 'jedenaście złotych 00/100'],
@@ -74,7 +76,30 @@ class SlownieTest extends TestCase
     public function notANumberInputsProvider()
     {
         return [
+            ['one'],
+            ['jeden'],
+            ['jeden złoty 00/100'],
             ['hundred'],
+        ];
+    }
+    
+    /**
+     * @dataProvider outOfRangeInputsProvider
+     */
+    public function testOutOfRangeInputs($amount)
+    {
+    	$this->expectException(OutOfRangeException::class);
+        Slownie::printSpelledOut($amount);
+    }
+
+    public function outOfRangeInputsProvider()
+    {
+        return [
+            [1000000000000000],
+            [1000000000000000.0],
+            ['1000000000000000'],
+            [1e15],
+            [1000000000000001],
         ];
     }
 }

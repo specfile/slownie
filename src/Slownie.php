@@ -6,6 +6,10 @@ class NotANumberException extends \Exception
 {
 }
 
+class OutOfRangeException extends \Exception
+{
+}
+
 class Slownie
 {
     private static $UNITIES = [
@@ -26,11 +30,9 @@ class Slownie
         if (!is_numeric($amount)) {
             throw new NotANumberException(sprintf('"%s" is not a number', $amount));
         }
-
-        if (is_int($amount)) {
-            $amount = intval($amount);
-        } elseif (is_float($amount)) {
-            $amount = floatval($amount);
+        
+        if ($amount >= 1e15) {
+            throw new OutOfRangeException(sprintf('%d is too big to print as trillions', $amount));
         }
 
         return static::printHelper($amount, 0);
