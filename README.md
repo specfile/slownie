@@ -33,4 +33,4 @@ BUGS
 ----
 * it only spells out numbers in one format and only in one language,
 * using int or floats as monetary values loses precission,
-* source code may be unidiomatic PHP, but it was fixed by *php-cs-fixer*.
+* source code may be unidiomatic PHP, but it was fixed by *phpcbf --standard=PSR2*.

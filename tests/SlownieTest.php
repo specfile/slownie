@@ -55,12 +55,22 @@ class SlownieTest extends TestCase
             [20000000, 'dwadzieścia milionów złotych 00/100'],
             [200000000, 'dwieście milionów złotych 00/100'],
             [-200000000, 'minus dwieście milionów złotych 00/100'],
-            [1234567890, 'miliard dwieście trzydzieści cztery miliony pięćset sześćdziesiąt siedem tysięcy osiemset dziewięćdziesiąt złotych 00/100'],
+            [1234567890,
+            'miliard dwieście trzydzieści cztery miliony pięćset ' .
+            'sześćdziesiąt siedem tysięcy osiemset dziewięćdziesiąt złotych 00/100'],
             [2000000000, 'dwa miliardy złotych 00/100'],
-            [1234567890123, 'bilion dwieście trzydzieści cztery miliardy pięćset sześćdziesiąt siedem milionów osiemset dziewięćdziesiąt tysięcy sto dwadzieścia trzy złote 00/100'],
+            [1234567890123,
+            'bilion dwieście trzydzieści cztery miliardy pięćset sześćdziesiąt siedem milionów ' .
+            'osiemset dziewięćdziesiąt tysięcy sto dwadzieścia trzy złote 00/100'],
             [2000000000000, 'dwa biliony złotych 00/100'],
-            [123567890123456, 'sto dwadzieścia trzy biliony pięćset sześćdziesiąt siedem miliardów osiemset dziewięćdziesiąt milionów sto dwadzieścia trzy tysiące czterysta pięćdziesiąt sześć złotych 00/100'],
-            [999999999999999, 'dziewięćset dziewięćdziesiąt dziewięć bilionów dziewięćset dziewięćdziesiąt dziewięć miliardów dziewięćset dziewięćdziesiąt dziewięć milionów dziewięćset dziewięćdziesiąt dziewięć tysięcy dziewięćset dziewięćdziesiąt dziewięć złotych 00/100'],
+            [123567890123456,
+            'sto dwadzieścia trzy biliony pięćset sześćdziesiąt siedem miliardów ' .
+            'osiemset dziewięćdziesiąt milionów sto dwadzieścia trzy tysiące ' .
+            'czterysta pięćdziesiąt sześć złotych 00/100'],
+            [999999999999999,
+            'dziewięćset dziewięćdziesiąt dziewięć bilionów dziewięćset dziewięćdziesiąt dziewięć miliardów ' .
+            'dziewięćset dziewięćdziesiąt dziewięć milionów dziewięćset dziewięćdziesiąt dziewięć tysięcy ' .
+            'dziewięćset dziewięćdziesiąt dziewięć złotych 00/100'],
         ];
     }
 
@@ -69,7 +79,7 @@ class SlownieTest extends TestCase
      */
     public function testNotANumberInputs($amount)
     {
-    	$this->expectException(NotANumberException::class);
+        $this->expectException(NotANumberException::class);
         Slownie::printSpelledOut($amount);
     }
 
@@ -88,7 +98,7 @@ class SlownieTest extends TestCase
      */
     public function testOutOfRangeInputs($amount)
     {
-    	$this->expectException(OutOfRangeException::class);
+        $this->expectException(OutOfRangeException::class);
         Slownie::printSpelledOut($amount);
     }
 

@@ -2,14 +2,6 @@
 
 namespace SpecFile;
 
-class NotANumberException extends \Exception
-{
-}
-
-class OutOfRangeException extends \Exception
-{
-}
-
 class Slownie
 {
     private static $UNITIES = [
@@ -40,9 +32,11 @@ class Slownie
 
     private static function printHelper($amount, $log_1000)
     {
-        // Based on CIA The World Factbook, see <https://www.cia.gov/LIBRARY/publications/the-world-factbook/rankorder/2215rank.html>,
+        // Based on CIA The World Factbook, see
+        // <https://www.cia.gov/LIBRARY/publications/the-world-factbook/rankorder/2215rank.html>,
         // we dont't need more units than to trillion (Poland uses long scale, so it's 'bilion' in Polish).
-        // Due to lack of precission of float (and values bigger than PHP_INT_MAX are always floats) we're screwed up anyway.
+        // Due to lack of precission of float (and values bigger than PHP_INT_MAX are always floats) we're screwed up
+        // anyway.
         $UNITS = [
             [
                 'złoty',
