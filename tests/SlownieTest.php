@@ -40,11 +40,13 @@ class SlownieTest extends TestCase
             [111, 'sto jedenaście złotych 00/100'],
             [112, 'sto dwanaście złotych 00/100'],
             [115, 'sto piętnaście złotych 00/100'],
+            [118.08, 'sto osiemnaście złotych 08/100'],
             [121, 'sto dwadzieścia jeden złotych 00/100'],
             [123, 'sto dwadzieścia trzy złote 00/100'],
             [125, 'sto dwadzieścia pięć złotych 00/100'],
             [999, 'dziewięćset dziewięćdziesiąt dziewięć złotych 00/100'],
             [999.99, 'dziewięćset dziewięćdziesiąt dziewięć złotych 99/100'],
+            [1121.76, 'tysiąc sto dwadzieścia jeden złotych 76/100'],
             [1234, 'tysiąc dwieście trzydzieści cztery złote 00/100'],
             [20000, 'dwadzieścia tysięcy złotych 00/100'],
             [200000, 'dwieście tysięcy złotych 00/100'],
@@ -111,5 +113,12 @@ class SlownieTest extends TestCase
             [1e15],
             [1000000000000001],
         ];
+    }
+
+    public function testGroszes()
+    {
+        for ($i = 0; $i < 100; $i++) {
+            $this->assertSame(sprintf('zero złotych %02d/100', $i), Slownie::printSpelledOut($i / 100));
+        }
     }
 }

@@ -95,7 +95,7 @@ class Slownie
         }
 
         if ($log_1000 == 0) {
-            $answer .= sprintf(' %02d/100', fmod($amount, 1) * 100);
+            $answer .= sprintf(' %02d/100', round(fmod($amount, 1) * 100));
         }
 
         return $answer;
