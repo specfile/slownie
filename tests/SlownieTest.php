@@ -28,6 +28,7 @@ class SlownieTest extends TestCase
             ['1', 'jeden złoty 00/100'],
             ['1.0', 'jeden złoty 00/100'],
             [-1, 'minus jeden złoty 00/100'],
+            [1.5, 'jeden złoty 50/100'],
             [10, 'dziesięć złotych 00/100'],
             [11, 'jedenaście złotych 00/100'],
             [12, 'dwanaście złotych 00/100'],

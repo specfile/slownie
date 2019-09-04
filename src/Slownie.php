@@ -192,7 +192,7 @@ class Slownie
 
     private static function pluralCategory($amount)
     {
-        if ($amount == 1) {
+        if (intval($amount) == 1) {
             return static::ONE;
         }
 
